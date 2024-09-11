@@ -16,7 +16,6 @@ struct LoginView: View {
     var body: some View {
         NavigationStack{
             VStack(spacing: 20) {
-                
                 Spacer()
                 
                 Image(systemName: "dollarsign.arrow.circlepath")
@@ -45,7 +44,6 @@ struct LoginView: View {
                     .cornerRadius(10)
                 
                 Button(action: {
-                    print("Logging in with username: \(username) and password: \(password)")
                     performLogin()
                 }) {
                     Text("Login")
