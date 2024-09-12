@@ -14,6 +14,12 @@
 		818A28A62C8FA7B7006A9788 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28A52C8FA7B7006A9788 /* UserService.swift */; };
 		818A28A82C90A4D9006A9788 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28A72C90A4D9006A9788 /* Endpoints.swift */; };
 		818A28AA2C90C411006A9788 /* UserRequestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28A92C90C411006A9788 /* UserRequestModels.swift */; };
+		818A28B52C923980006A9788 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28B42C923980006A9788 /* TextView.swift */; };
+		818A28B72C9239DC006A9788 /* TextComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28B62C9239DC006A9788 /* TextComponent.swift */; };
+		818A28BA2C923AFE006A9788 /* TextLayoutConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28B92C923AFE006A9788 /* TextLayoutConfig.swift */; };
+		818A28BF2C9295DE006A9788 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28BE2C9295DE006A9788 /* TextFieldView.swift */; };
+		818A28C12C9295FA006A9788 /* TextFieldComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28C02C9295FA006A9788 /* TextFieldComponent.swift */; };
+		818A28C32C929622006A9788 /* TextFieldLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28C22C929622006A9788 /* TextFieldLayout.swift */; };
 		81FE07122C8EDD84006D3B78 /* BancoValorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FE07112C8EDD84006D3B78 /* BancoValorApp.swift */; };
 		81FE07142C8EDD84006D3B78 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FE07132C8EDD84006D3B78 /* ContentView.swift */; };
 		81FE07162C8EDD87006D3B78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81FE07152C8EDD87006D3B78 /* Assets.xcassets */; };
@@ -48,6 +54,12 @@
 		818A28A52C8FA7B7006A9788 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		818A28A72C90A4D9006A9788 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		818A28A92C90C411006A9788 /* UserRequestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestModels.swift; sourceTree = "<group>"; };
+		818A28B42C923980006A9788 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		818A28B62C9239DC006A9788 /* TextComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextComponent.swift; sourceTree = "<group>"; };
+		818A28B92C923AFE006A9788 /* TextLayoutConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLayoutConfig.swift; sourceTree = "<group>"; };
+		818A28BE2C9295DE006A9788 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		818A28C02C9295FA006A9788 /* TextFieldComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldComponent.swift; sourceTree = "<group>"; };
+		818A28C22C929622006A9788 /* TextFieldLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLayout.swift; sourceTree = "<group>"; };
 		81FE070E2C8EDD84006D3B78 /* BancoValor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BancoValor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81FE07112C8EDD84006D3B78 /* BancoValorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BancoValorApp.swift; sourceTree = "<group>"; };
 		81FE07132C8EDD84006D3B78 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,6 +97,121 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		818A28AB2C92386C006A9788 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				818A28A52C8FA7B7006A9788 /* UserService.swift */,
+				818A28B22C923943006A9788 /* DynamicComponents */,
+				818A28C42C929672006A9788 /* Models */,
+				818A28AD2C9238EC006A9788 /* Features */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		818A28AC2C9238C2006A9788 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				81FE07152C8EDD87006D3B78 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		818A28AD2C9238EC006A9788 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				818A28B02C923913006A9788 /* Home */,
+				818A28AF2C923909006A9788 /* Registry */,
+				818A28AE2C9238FF006A9788 /* Login */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		818A28AE2C9238FF006A9788 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				818A28B12C923923006A9788 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		818A28AF2C923909006A9788 /* Registry */ = {
+			isa = PBXGroup;
+			children = (
+				818A28BB2C929551006A9788 /* View */,
+			);
+			path = Registry;
+			sourceTree = "<group>";
+		};
+		818A28B02C923913006A9788 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				818A28BC2C92957F006A9788 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		818A28B12C923923006A9788 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				818A289D2C8F1D81006A9788 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		818A28B22C923943006A9788 /* DynamicComponents */ = {
+			isa = PBXGroup;
+			children = (
+				818A28BD2C9295A5006A9788 /* TextField */,
+				818A28B32C923959006A9788 /* Text */,
+			);
+			path = DynamicComponents;
+			sourceTree = "<group>";
+		};
+		818A28B32C923959006A9788 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				818A28B42C923980006A9788 /* TextView.swift */,
+				818A28B62C9239DC006A9788 /* TextComponent.swift */,
+				818A28B92C923AFE006A9788 /* TextLayoutConfig.swift */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
+		818A28BB2C929551006A9788 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				818A28A32C8F3DE9006A9788 /* RegistryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		818A28BC2C92957F006A9788 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				818A289F2C8F360C006A9788 /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		818A28BD2C9295A5006A9788 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				818A28BE2C9295DE006A9788 /* TextFieldView.swift */,
+				818A28C02C9295FA006A9788 /* TextFieldComponent.swift */,
+				818A28C22C929622006A9788 /* TextFieldLayout.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		818A28C42C929672006A9788 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				818A28A92C90C411006A9788 /* UserRequestModels.swift */,
+				818A28A72C90A4D9006A9788 /* Endpoints.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		81FE07052C8EDD84006D3B78 = {
 			isa = PBXGroup;
 			children = (
@@ -108,17 +235,12 @@
 		81FE07102C8EDD84006D3B78 /* BancoValor */ = {
 			isa = PBXGroup;
 			children = (
+				818A28AC2C9238C2006A9788 /* Resources */,
+				818A28AB2C92386C006A9788 /* Source */,
 				81FE07112C8EDD84006D3B78 /* BancoValorApp.swift */,
 				81FE07132C8EDD84006D3B78 /* ContentView.swift */,
-				81FE07152C8EDD87006D3B78 /* Assets.xcassets */,
 				81FE07172C8EDD87006D3B78 /* Preview Content */,
-				818A289D2C8F1D81006A9788 /* LoginView.swift */,
-				818A289F2C8F360C006A9788 /* HomeView.swift */,
 				818A28A12C8F3690006A9788 /* ErrorView.swift */,
-				818A28A32C8F3DE9006A9788 /* RegistryView.swift */,
-				818A28A52C8FA7B7006A9788 /* UserService.swift */,
-				818A28A72C90A4D9006A9788 /* Endpoints.swift */,
-				818A28A92C90C411006A9788 /* UserRequestModels.swift */,
 			);
 			path = BancoValor;
 			sourceTree = "<group>";
@@ -281,12 +403,18 @@
 				818A28A62C8FA7B7006A9788 /* UserService.swift in Sources */,
 				818A28A22C8F3690006A9788 /* ErrorView.swift in Sources */,
 				818A289E2C8F1D81006A9788 /* LoginView.swift in Sources */,
+				818A28BF2C9295DE006A9788 /* TextFieldView.swift in Sources */,
 				818A28A02C8F360C006A9788 /* HomeView.swift in Sources */,
+				818A28BA2C923AFE006A9788 /* TextLayoutConfig.swift in Sources */,
 				818A28AA2C90C411006A9788 /* UserRequestModels.swift in Sources */,
 				818A28A42C8F3DE9006A9788 /* RegistryView.swift in Sources */,
+				818A28C32C929622006A9788 /* TextFieldLayout.swift in Sources */,
 				81FE07142C8EDD84006D3B78 /* ContentView.swift in Sources */,
 				818A28A82C90A4D9006A9788 /* Endpoints.swift in Sources */,
 				81FE07122C8EDD84006D3B78 /* BancoValorApp.swift in Sources */,
+				818A28C12C9295FA006A9788 /* TextFieldComponent.swift in Sources */,
+				818A28B72C9239DC006A9788 /* TextComponent.swift in Sources */,
+				818A28B52C923980006A9788 /* TextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

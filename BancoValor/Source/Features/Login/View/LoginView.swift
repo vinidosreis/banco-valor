@@ -16,20 +16,15 @@ struct LoginView: View {
     var body: some View {
         NavigationStack{
             VStack(spacing: 20) {
-                Spacer()
-                
                 Image(systemName: "dollarsign.arrow.circlepath")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 130, height: 130 )
+                    .frame(width: 130, height: 130)
                     .foregroundColor(.blue)
-                    .padding(.top, -30)
+                    .padding(.top, 90)
                     .frame(maxWidth: .infinity)
                 
-                Text("Banco Valor")
-                    .foregroundStyle(.blue)
-                    .font(.largeTitle)
-                    .padding(.bottom, 50)
+//                TextView(textComponent: .init(textMessage: "Banco Valor", textLayoutConfig: .init(foregroundStyle: .blue, font: .largeTitle)))
                 
                 TextField("Usuario", text: $username)
                     .padding()
@@ -46,24 +41,19 @@ struct LoginView: View {
                 Button(action: {
                     performLogin()
                 }) {
-                    Text("Login")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+//                    TextView(textComponent: .init(textMessage: "Login", textLayoutConfig: .init(foregroundStyle: .white)))
+//                        .frame(maxWidth: .infinity)
+//                        .padding()
+//                        .background(Color.blue)
+//                        .cornerRadius(10)
                 }
                 
                 NavigationLink(destination: RegistryView(service: service)) {
-                    Text("Criar nova conta")
-                        .font(.subheadline)
-                        .foregroundColor(.black)
-                        .underline()
-                        .padding(.top, 20)
+//                    TextView(textComponent: .init(textMessage: "Criar nova conta", textLayoutConfig: .init(font: .subheadline))).underline()
+//                        .padding(.top, 20)
                 }
                 
                 Spacer()
-                
             }
             .padding(.horizontal, 50)
             .frame(maxWidth: .infinity, maxHeight: .infinity)

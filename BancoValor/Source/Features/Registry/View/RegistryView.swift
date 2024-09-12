@@ -17,9 +17,9 @@ struct RegistryView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
-                Text("Nova conta valor")
-                    .font(.title)
-                    .padding(.top, 40)
+//                TextView(textComponent: .init(textMessage: "Nova conta valor", textLayoutConfig: .init(font: .largeTitle)))
+//                    .padding(.top, 40)
+//                    .padding(.bottom, 20)
                 
                 TextField("Usuário", text: $username)
                     .textInputAutocapitalization(.never)
@@ -36,6 +36,8 @@ struct RegistryView: View {
                     .padding()
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(10)
+                    .padding(.bottom, 30)
+
                 
                 Button(action: performRegistry) {
                     Text("Criar conta")
