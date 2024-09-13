@@ -24,22 +24,7 @@ struct RegistryView: View {
                 TextView("Nova Conta Valor", layout: .init(color: .blue, font: .largeTitle))
                     .padding()
         
-                TextField("Usuário", text: $username)
-                    .textInputAutocapitalization(.never)
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(10)
-                
-                SecureField("Senha", text: $password)
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(10)
-                
-                SecureField("Confirme a senha", text: $confirmPassword)
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(10)
-                    .padding(.bottom, 0)
+                TextFieldView(username: $username, password: $password, confirmPassword: $confirmPassword, registry: true)
                 
                 Button(action: performRegistry) {
                     TextView("Criar conta", layout: .init(color: .white))
