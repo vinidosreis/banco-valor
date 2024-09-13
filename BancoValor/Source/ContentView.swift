@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    let service: UserServiceProtocol
+    
     var body: some View {
-        let service = UserService()
         LoginView(service: service)
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(service: UserService())
 }

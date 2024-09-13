@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct BancoValorApp: App {
+    let service = UserService()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(service: service)
         }
     }
 }

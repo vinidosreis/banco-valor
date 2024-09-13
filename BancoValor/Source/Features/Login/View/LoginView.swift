@@ -16,15 +16,11 @@ struct LoginView: View {
     var body: some View {
         NavigationStack{
             VStack(spacing: 20) {
-                Image(systemName: "dollarsign.arrow.circlepath")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 130, height: 130)
+                ImageView("dollarsign.arrow.circlepath", h: 130, w: 130)
                     .foregroundColor(.blue)
                     .padding(.top, 90)
-                    .frame(maxWidth: .infinity)
                 
-//                TextView(textComponent: .init(textMessage: "Banco Valor", textLayoutConfig: .init(foregroundStyle: .blue, font: .largeTitle)))
+                TextView("Banco Valor", layout: .init(color: .blue, font: .largeTitle))
                 
                 TextField("Usuario", text: $username)
                     .padding()
@@ -41,16 +37,17 @@ struct LoginView: View {
                 Button(action: {
                     performLogin()
                 }) {
-//                    TextView(textComponent: .init(textMessage: "Login", textLayoutConfig: .init(foregroundStyle: .white)))
-//                        .frame(maxWidth: .infinity)
-//                        .padding()
-//                        .background(Color.blue)
-//                        .cornerRadius(10)
+                    TextView("Login", layout: .init(color: .white))
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
                 }
                 
                 NavigationLink(destination: RegistryView(service: service)) {
-//                    TextView(textComponent: .init(textMessage: "Criar nova conta", textLayoutConfig: .init(font: .subheadline))).underline()
-//                        .padding(.top, 20)
+                    TextView("Criar nova conta")
+                        .underline()
+                        .padding(.top, 20)
                 }
                 
                 Spacer()

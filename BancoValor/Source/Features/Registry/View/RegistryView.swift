@@ -17,10 +17,13 @@ struct RegistryView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
-//                TextView(textComponent: .init(textMessage: "Nova conta valor", textLayoutConfig: .init(font: .largeTitle)))
-//                    .padding(.top, 40)
-//                    .padding(.bottom, 20)
+                ImageView("dollarsign.arrow.circlepath", h: 130, w: 130)
+                    .foregroundColor(.blue)
+                    .padding(.top, 30)
                 
+                TextView("Nova Conta Valor", layout: .init(color: .blue, font: .largeTitle))
+                    .padding()
+        
                 TextField("Usuário", text: $username)
                     .textInputAutocapitalization(.never)
                     .padding()
@@ -36,15 +39,13 @@ struct RegistryView: View {
                     .padding()
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(10)
-                    .padding(.bottom, 30)
-
+                    .padding(.bottom, 0)
                 
                 Button(action: performRegistry) {
-                    Text("Criar conta")
+                    TextView("Criar conta", layout: .init(color: .white))
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
+                        .background(.blue)
                         .cornerRadius(10)
                 }
                 .padding(.top, 20)
@@ -58,6 +59,19 @@ struct RegistryView: View {
             .navigationDestination(isPresented: $isRegistred) {
                 HomeView()
             }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    HStack(spacing: 0) {
+                        Button(action: {
+                        }) {
+                            Image(systemName: "arrow.left")
+                                .foregroundStyle(.black)
+                        }
+                        
+                        TextView("Voltar")
+                    }
+                }
+            }
         }
     }
 }
@@ -69,6 +83,7 @@ extension RegistryView {
                 let registryRequest = UserRequest(username: username, password: password)
                 _ = try await service.makeRequest(endpoint: .registerUser, body: registryRequest, responseType: LoginResponse.self)
                 isRegistred = true
+                print("user registred!")
             } catch {
                 print("Erro ao registrar usuário: \(error.localizedDescription)")
             }

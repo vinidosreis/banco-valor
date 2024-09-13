@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 struct TextLayoutConfig {
-    var frameWidth: CGFloat = .infinity
-    var frameHeight: CGFloat = .infinity
-    var foregroundStyle: Color? = .black
-    var font: Font = .body
+    var width: CGFloat = .infinity
+    var height: CGFloat = .infinity
+    var color: Color = .black
+    var font: Font = .headline
 }

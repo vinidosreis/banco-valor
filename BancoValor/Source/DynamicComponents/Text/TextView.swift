@@ -8,25 +8,26 @@
 import SwiftUI
 
 struct TextView: View {
-    let textComponent: TextComponent
+    var message: String
+    var layoutConfig = TextLayoutConfig()
     
-    init(_ textMessage: String) {
-        let defaultLayout = TextLayoutConfig()
-        self.textComponent = TextComponent(textMessage, textLayoutConfig: defaultLayout)
+    init(_ message: String) {
+        self.message = message
+    }
+    
+    init(_ message: String, layout: TextLayoutConfig) {
+        self.message = message
+        self.layoutConfig = layout
     }
     
     var body: some View {
-        Text(textComponent.textMessage)
-            .frame(width: textComponent.textLayoutConfig.frameWidth, height: textComponent.textLayoutConfig.frameHeight)
-            .foregroundStyle((textComponent.textLayoutConfig.foregroundStyle ?? .black))
-            .font(textComponent.textLayoutConfig.font)
+        Text(message)
+            .frame(width: layoutConfig.width, height: layoutConfig.height)
+            .foregroundStyle((layoutConfig.color))
+            .font(layoutConfig.font)
     }
 }
 
 #Preview {
-    return VStack {
-        TextView("Banco Valor")
-        TextView("Banco Valor")
-    }
-    .padding([.leading, .trailing], 16)
+    TextView("TESTE", layout: .init(font: .largeTitle))
 }
