@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    let service: UserServiceProtocol
+    let service: BankServiceProtocol
     
     var body: some View {
         LoginView(service: service)
@@ -16,5 +16,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(service: UserService())
+    ContentView(service: BankService())
 }

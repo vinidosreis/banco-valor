@@ -13,3 +13,9 @@ struct UserRequest: Codable {
 struct LoginResponse: Codable {
     let response: String
 }
+
+struct AccountBalance: Codable {
+    let balance: String
+    let creditCardBill: String
+    let creditCardLimit: String
+}

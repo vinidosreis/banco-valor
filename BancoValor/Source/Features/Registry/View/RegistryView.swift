@@ -12,7 +12,7 @@ struct RegistryView: View {
     @State private var password = ""
     @State private var confirmPassword = ""
     @State private var isRegistred = false
-    let service: UserServiceProtocol
+    let service: BankServiceProtocol
     
     var body: some View {
         NavigationStack {
@@ -42,7 +42,7 @@ struct RegistryView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.white)
             .navigationDestination(isPresented: $isRegistred) {
-                HomeView()
+                HomeView(service: service)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -65,8 +65,8 @@ extension RegistryView {
     private func performRegistry() {
         Task {
             do {
-                let registryRequest = UserRequest(username: username, password: password)
-                _ = try await service.makeRequest(endpoint: .registerUser, body: registryRequest, responseType: LoginResponse.self)
+//                let registryRequest = UserRequest(username: username, password: password)
+//                _ = try await service.makeRequest(endpoint: .registerUser, body: registryRequest, responseType: LoginResponse.self, headers: nil)
                 isRegistred = true
                 print("user registred!")
             } catch {
@@ -77,5 +77,5 @@ extension RegistryView {
 }
 
 #Preview {
-    RegistryView(service: UserService())
+    RegistryView(service: BankService())
 }

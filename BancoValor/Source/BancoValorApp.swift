@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct BancoValorApp: App {
-    let service = UserService()
+    let service = BankService()
     
     var body: some Scene {
         WindowGroup {

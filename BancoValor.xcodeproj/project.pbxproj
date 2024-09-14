@@ -11,11 +11,12 @@
 		811A22232C9420590079233A /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811A22222C9420590079233A /* CreditCardView.swift */; };
 		811A22252C9420780079233A /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811A22242C9420780079233A /* BalanceView.swift */; };
 		811A22272C9421480079233A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811A22262C9421480079233A /* HeaderView.swift */; };
+		811A222C2C94AA690079233A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 811A222B2C94AA690079233A /* KeychainAccess */; };
 		818A289E2C8F1D81006A9788 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A289D2C8F1D81006A9788 /* LoginView.swift */; };
 		818A28A02C8F360C006A9788 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A289F2C8F360C006A9788 /* HomeView.swift */; };
 		818A28A22C8F3690006A9788 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28A12C8F3690006A9788 /* ErrorView.swift */; };
 		818A28A42C8F3DE9006A9788 /* RegistryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28A32C8F3DE9006A9788 /* RegistryView.swift */; };
-		818A28A62C8FA7B7006A9788 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28A52C8FA7B7006A9788 /* UserService.swift */; };
+		818A28A62C8FA7B7006A9788 /* BankService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28A52C8FA7B7006A9788 /* BankService.swift */; };
 		818A28A82C90A4D9006A9788 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28A72C90A4D9006A9788 /* Endpoints.swift */; };
 		818A28AA2C90C411006A9788 /* UserRequestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28A92C90C411006A9788 /* UserRequestModels.swift */; };
 		818A28B52C923980006A9788 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A28B42C923980006A9788 /* TextView.swift */; };
@@ -58,7 +59,7 @@
 		818A289F2C8F360C006A9788 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		818A28A12C8F3690006A9788 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		818A28A32C8F3DE9006A9788 /* RegistryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryView.swift; sourceTree = "<group>"; };
-		818A28A52C8FA7B7006A9788 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		818A28A52C8FA7B7006A9788 /* BankService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankService.swift; sourceTree = "<group>"; };
 		818A28A72C90A4D9006A9788 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		818A28A92C90C411006A9788 /* UserRequestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestModels.swift; sourceTree = "<group>"; };
 		818A28B42C923980006A9788 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				811A222C2C94AA690079233A /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,7 +120,6 @@
 				81FE07132C8EDD84006D3B78 /* ContentView.swift */,
 				81D3C97A2C92E46B00D20049 /* Network */,
 				818A28B22C923943006A9788 /* DynamicComponents */,
-				818A28C42C929672006A9788 /* Models */,
 				818A28AD2C9238EC006A9788 /* Features */,
 			);
 			path = Source;
@@ -235,7 +236,8 @@
 		81D3C97A2C92E46B00D20049 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				818A28A52C8FA7B7006A9788 /* UserService.swift */,
+				818A28A52C8FA7B7006A9788 /* BankService.swift */,
+				818A28C42C929672006A9788 /* Models */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -327,6 +329,9 @@
 			dependencies = (
 			);
 			name = BancoValor;
+			packageProductDependencies = (
+				811A222B2C94AA690079233A /* KeychainAccess */,
+			);
 			productName = BancoValor;
 			productReference = 81FE070E2C8EDD84006D3B78 /* BancoValor.app */;
 			productType = "com.apple.product-type.application";
@@ -399,6 +404,9 @@
 				Base,
 			);
 			mainGroup = 81FE07052C8EDD84006D3B78;
+			packageReferences = (
+				811A222A2C94AA680079233A /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = 81FE070F2C8EDD84006D3B78 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -443,7 +451,7 @@
 			files = (
 				811A22202C94188C0079233A /* ImageView.swift in Sources */,
 				811A22272C9421480079233A /* HeaderView.swift in Sources */,
-				818A28A62C8FA7B7006A9788 /* UserService.swift in Sources */,
+				818A28A62C8FA7B7006A9788 /* BankService.swift in Sources */,
 				811A22232C9420590079233A /* CreditCardView.swift in Sources */,
 				818A28A22C8F3690006A9788 /* ErrorView.swift in Sources */,
 				818A289E2C8F1D81006A9788 /* LoginView.swift in Sources */,
@@ -628,6 +636,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -657,6 +666,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -788,6 +798,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		811A222A2C94AA680079233A /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		811A222B2C94AA690079233A /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 811A222A2C94AA680079233A /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 81FE07062C8EDD84006D3B78 /* Project object */;
 }

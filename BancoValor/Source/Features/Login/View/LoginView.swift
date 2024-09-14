@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import KeychainAccess
 
 struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var isLoggedIn: Bool = false
-    let service: UserServiceProtocol
+    let service: BankServiceProtocol
     
     var body: some View {
         NavigationStack{
@@ -46,7 +47,7 @@ struct LoginView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.white)
             .navigationDestination(isPresented: $isLoggedIn) {
-                HomeView()
+                HomeView(service: service)
             }
         }
     }
@@ -57,16 +58,27 @@ extension LoginView {
         Task {
             do {
                 let loginRequest = UserRequest(username: username, password: password)
-                let response = try await service.makeRequest(endpoint: .loginUser, body: loginRequest, responseType: LoginResponse.self)
-                print(response)
+                let response = try await service.makeRequest(endpoint: .loginUser, headers: nil, body: loginRequest, responseType: LoginResponse.self)
+                print("olha o token \(response.response)")
+                saveTokenToKeychain(token: response.response)
+                                
                 isLoggedIn = true
             } catch {
-                print (error.localizedDescription)
+                print ("deu ruim: \(error.localizedDescription)")
             }
         }
     }
+    
+    private func saveTokenToKeychain(token: String) {
+           let keychain = Keychain(service: "com.example.BancoValor")
+           do {
+               try keychain.set(token, key: "jwtToken")
+           } catch let error {
+               print("Error saving token to Keychain: \(error)")
+           }
+       }
 }
 
 #Preview {
-    LoginView(service: UserService())
+    LoginView(service: BankService())
 }

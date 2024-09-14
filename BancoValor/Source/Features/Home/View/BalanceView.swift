@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BalanceView: View {
-    let title: String
     let balance: String
     let buttons: [(String, String)] = [
         ("creditcard", "Área Pix"),
@@ -19,11 +18,11 @@ struct BalanceView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            TextView(title)
+            TextView("Conta Corrente")
                 .padding(.top)
                 .padding(.bottom, 1)
             
-            TextView(balance, layout: .init(font: .largeTitle))
+            TextView("R$ \(balance)", layout: .init(font: .largeTitle))
                 .font(.largeTitle)
                 .bold()
             
@@ -44,6 +43,16 @@ struct BalanceView: View {
         .shadow(radius: 5)
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
+    }
+}
+
+extension BalanceView {
+    func fetchAccountInfo() async {
+        do {
+            
+        } catch {
+            
+        }
     }
 }
 

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CreditCardView: View {
+    let bill: String
+    let limit: String
+    
     var body: some View {
         VStack(alignment: .leading) {
             TextView("Cartão de crédito")
@@ -16,11 +19,11 @@ struct CreditCardView: View {
             
             TextView("Fatura atual", layout: .init(font: .subheadline))
             
-            TextView("R$ 1.094,80", layout: .init(font: .largeTitle))
+            TextView("R$ \(bill)", layout: .init(font: .largeTitle))
                 .font(.largeTitle)
                 .bold()
             
-            TextView("Limite disponível: R$ 730,00")
+            TextView("Limite disponível: R$ \(limit)")
                 .padding(.top, 1)
             
             Spacer().frame(maxWidth: .infinity, maxHeight: 8)
@@ -34,5 +37,5 @@ struct CreditCardView: View {
 }
 
 #Preview {
-    CreditCardView()
+    CreditCardView(bill: "", limit: "")
 }
