@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct BancoValorApp: App {
-    let service = BankService()
+    let service = BankService(network: URLSession.shared)
     
     var body: some Scene {
         WindowGroup {

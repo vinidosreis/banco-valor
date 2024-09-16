@@ -16,5 +16,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(service: BankService())
+    ContentView(service: BankService(network: URLSession.shared))
 }

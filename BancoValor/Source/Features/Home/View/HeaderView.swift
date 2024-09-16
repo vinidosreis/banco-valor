@@ -13,7 +13,7 @@ struct HeaderView: View {
     var body: some View {
         VStack {
             HStack {
-                TextView("Bem vindo, \(name)", layout: .init(color: .white))
+                TextView("Bem vindo \(name)", layout: .init(color: .white))
                     .padding(.leading, 16)
                 Spacer()
             }

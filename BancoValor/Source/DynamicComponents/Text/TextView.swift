@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TextView: View {
-    var message: String
+    let message: String
     var layoutConfig = TextLayoutConfig()
     
     init(_ message: String) {

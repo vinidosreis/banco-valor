@@ -65,17 +65,16 @@ extension RegistryView {
     private func performRegistry() {
         Task {
             do {
-//                let registryRequest = UserRequest(username: username, password: password)
-//                _ = try await service.makeRequest(endpoint: .registerUser, body: registryRequest, responseType: LoginResponse.self, headers: nil)
+                let registryRequest = UserRequest(username: username, password: password)
+                _ = try await service.makeRequest(endpoint: .registerUser, headers: nil, body: registryRequest, responseType: LoginResponse.self)
                 isRegistred = true
-                print("user registred!")
             } catch {
-                print("Erro ao registrar usuário: \(error.localizedDescription)")
+                print(BVError.registryError(error: error))
             }
         }
     }
 }
 
 #Preview {
-    RegistryView(service: BankService())
+    RegistryView(service: BankService(network: URLSession.shared))
 }

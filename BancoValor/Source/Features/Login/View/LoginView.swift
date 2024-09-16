@@ -11,7 +11,9 @@ import KeychainAccess
 struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
-    @State private var isLoggedIn: Bool = false
+    @State private var isLoading = false
+    @State private var showError = false
+    @State private var isLoggedIn = false
     let service: BankServiceProtocol
     
     var body: some View {
@@ -59,12 +61,12 @@ extension LoginView {
             do {
                 let loginRequest = UserRequest(username: username, password: password)
                 let response = try await service.makeRequest(endpoint: .loginUser, headers: nil, body: loginRequest, responseType: LoginResponse.self)
-                print("olha o token \(response.response)")
-                saveTokenToKeychain(token: response.response)
-                                
+                
+                saveTokenToKeychain(token: response.token)
+            
                 isLoggedIn = true
             } catch {
-                print ("deu ruim: \(error.localizedDescription)")
+                print(BVError.loginFailed.localizedDescription)
             }
         }
     }
@@ -73,12 +75,12 @@ extension LoginView {
            let keychain = Keychain(service: "com.example.BancoValor")
            do {
                try keychain.set(token, key: "jwtToken")
-           } catch let error {
-               print("Error saving token to Keychain: \(error)")
+           } catch {
+               print(BVError.keychain(error: error))
            }
        }
 }
 
 #Preview {
-    LoginView(service: BankService())
+    LoginView(service: BankService(network: URLSession.shared))
 }

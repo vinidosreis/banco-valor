@@ -11,10 +11,15 @@ struct UserRequest: Codable {
 }
 
 struct LoginResponse: Codable {
-    let response: String
+    let token: String
+    
+    enum CodingKeys: String, CodingKey {
+        case token = "response"
+    }
 }
 
-struct AccountBalance: Codable {
+struct accountData: Codable {
+    let name: String
     let balance: String
     let creditCardBill: String
     let creditCardLimit: String

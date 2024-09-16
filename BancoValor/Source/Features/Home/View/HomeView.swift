@@ -10,6 +10,8 @@ import KeychainAccess
 
 struct HomeView: View {
     let service: BankServiceProtocol
+    
+    @State private var name: String = ""
     @State private var balance: String = "--"
     @State private var creditCardBill: String = "--"
     @State private var creditCardLimit: String = "--"
@@ -17,7 +19,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
-                HeaderView(name: "Vinícius")
+                HeaderView(name: ", \(name)")
                 
                 BalanceView(balance: balance)
                 
@@ -25,43 +27,44 @@ struct HomeView: View {
                 
                 Spacer()
             }
-            .background(Color.gray.opacity(0.1).edgesIgnoringSafeArea(.all))
             .customToolbar()
+            .background(Color.gray.opacity(0.1).edgesIgnoringSafeArea(.all))
             .task {
                 await fetchBalance()
             }
         }
     }
 }
+struct EmptyBody: Codable {}
 
 extension HomeView {
     private func fetchBalance() async {
         Task {
             do {
-                // Acessa o Keychain para recuperar o token JWT
                 let keychain = Keychain(service: "com.example.BancoValor")
                 guard let token = keychain["jwtToken"] else {
-                    print("Token não encontrado no Keychain")
+                    print(BVError.keychain(error: BVError.missingData))
                     return
                 }
                 
-                // Define o header Authorization com o token JWT
                 let headers = ["Authorization": "Bearer \(token)"]
+                let balanceResponse = try await service.makeRequest(endpoint: .accountData, headers: headers, body: false, responseType: accountData.self)
                 
-                // Faz a requisição usando o método makeRequest, agora passando os headers
-                let balanceResponse = try await service.makeRequest(endpoint: .getBalance, headers: headers, body: ["":""], responseType: AccountBalance.self)
-                
-                // Atualiza as variáveis de estado com os dados recebidos
-                balance = balanceResponse.balance
-                creditCardBill = balanceResponse.creditCardBill
-                creditCardLimit = balanceResponse.creditCardLimit
+                updateBalance(response: balanceResponse)
             } catch {
-                print("Error to get balance: \(error.localizedDescription)")
+                print(BVError.missingData)
             }
         }
+    }
+    
+    private func updateBalance(response: accountData) {
+        name = response.name
+        balance = response.balance
+        creditCardBill = response.creditCardBill
+        creditCardLimit = response.creditCardLimit
     }
 }
 
 #Preview {
-    HomeView(service: BankService())
+    HomeView(service: BankService(network: URLSession.shared))
 }

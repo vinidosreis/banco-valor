@@ -11,44 +11,54 @@ protocol BankServiceProtocol {
     func makeRequest<T: Codable, U: Codable>(
         endpoint: Urls,
         headers: [String: String]?,
-        body: T?,
-        responseType: U.Type) async throws -> U
+        body: T,
+        responseType: U.Type
+    ) async throws -> U
 }
 
 
 struct BankService: BankServiceProtocol {
+    let network: URLSession
+    
     func makeRequest<T: Codable, U: Codable>(
         endpoint: Urls,
-        headers: [String: String]? = nil,
-        body: T? = nil,
-        responseType: U.Type) async throws -> U {
+        headers: [String: String]?,
+        body: T,
+        responseType: U.Type
+    ) async throws -> U {
         let (method, fullUrl) = endpoint.httpMethodUrl()
-        guard let url = URL(string: fullUrl) else { throw URLError(.badURL) }
+        guard let url = URL(string: fullUrl) else {
+            throw BVError.invalidURL
+        }
         
         var request = URLRequest(url: url)
+        
         request.httpMethod = method.rawValue
         
-        // Adiciona os headers, se houver
         if let headers {
             for (key, value) in headers {
                 request.setValue(value, forHTTPHeaderField: key)
             }
         }
         
-            if request.httpMethod != "GET" {
-                if let body {
-                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                    request.httpBody = try? JSONEncoder().encode(body)
-                }
+        if method != .GET {
+            
+            do {
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.httpBody = try JSONEncoder().encode(body)
+            } catch {
+                throw BVError.encodingError(error: error)
             }
-        
-        let (data, _) = try await URLSession.shared.data(for: request)
-        
-        guard let decodedResponse = try? JSONDecoder().decode(U.self, from: data) else {
-            throw NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Decoding error"])
+            
         }
         
-        return decodedResponse
+        let (data, _) = try await network.data(for: request)
+        
+        do {
+            return try JSONDecoder().decode(U.self, from: data)
+        } catch {
+            throw BVError.decodingError(error: error)
+        }
     }
 }
 
